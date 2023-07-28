@@ -1,0 +1,69 @@
+@circleDim: 24px;
+@bgPage: black;
+@fadeTimer: 25s;
+
+body {
+    background-color: @bgPage;
+    padding: 20px;
+}
+.buttonBar {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.colorButton {
+    margin: 5px;
+    padding: 10px;
+    background-color: #232323;
+    .rounded(10px);
+    font-family: Arial;
+    color: white;
+    text-decoration: none;
+    font-size: .8em;
+}
+#red.glow { .box-shadow(0 0 18px red); }
+#green.glow { .box-shadow(0 0 18px green); }
+#blue.glow { .box-shadow(0 0 18px blue); }
+#yellow.glow { .box-shadow(0 0 18px yellow); }
+.cl {
+    background-color: #232323;
+    float: left;
+    margin: 0px 1px 1px 0px;
+    width: @circleDim;
+    height: @circleDim;
+    .rounded(@circleDim);
+    .transition(@fadeTimer);
+}
+.cl:hover, .hovered, .cl.red:hover, .cl.red.hovered {
+    background-color: red;
+    .transition(0s);
+}
+.cl.green:hover, .cl.green.hovered {
+    background-color: green;
+    .transition(0s);
+}
+.cl.blue:hover, .cl.blue.hovered {
+    background-color: blue;
+    .transition(0s);
+}
+.cl.yellow:hover, .cl.yellow.hovered {
+    background-color: yellow;
+    .transition(0s);
+}
+
+.transition(@duration:0.1s, @ease:ease-out) {
+    -webkit-transition: all @duration @ease;
+    -moz-transition: all @duration @ease;
+    -o-transition: all @duration @ease;
+    transition: all @duration @ease;
+}
+.rounded(@radius: 2px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.box-shadow(@arguments) {
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
