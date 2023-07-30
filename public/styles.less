@@ -1,6 +1,6 @@
-@circleDim: 24px;
+@circleDim: 10px;
 @bgPage: black;
-@fadeTimer: 25s;
+@fadeTimer: 0.5s;
 
 body {
     background-color: @bgPage;
@@ -35,7 +35,8 @@ body {
     .transition(@fadeTimer);
 }
 .cl:hover, .hovered, .cl.red:hover, .cl.red.hovered {
-    background-color: red;
+    //background-color: red;
+    background-color: #FFFF60;
     .transition(0s);
 }
 .cl.green:hover, .cl.green.hovered {
@@ -66,4 +67,12 @@ body {
     -webkit-box-shadow: @arguments;
     -moz-box-shadow: @arguments;
     box-shadow: @arguments;
+}
+
+a.cl:nth-child(5n+2) {
+    margin-right: 8px;
+}
+
+a.cl:nth-child(1397n) {
+    //margin-bottom: 8px;
 }
