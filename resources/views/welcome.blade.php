@@ -9,7 +9,7 @@
 <input id="value6" value="patryk ssie pałke"><button id="myButton6">odp 6</button><br/>
 
 <script>
-    var conn = new WebSocket('ws://localhost:8080');
+    var conn = new WebSocket('ws://localhost:17949');
 
     conn.onopen = function(e) {
         console.log("Połączenie z serwerem WebSocket zostało nawiązane!");
