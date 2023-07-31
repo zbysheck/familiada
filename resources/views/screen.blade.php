@@ -32,7 +32,7 @@
     </body>
     <script>
 
-        var conn = new WebSocket('ws://localhost:8080');
+        var conn = new WebSocket('ws://familiada.zbigniewkisly.usermd.net:17949');
 
         conn.onopen = function(e) {
             console.log("Połączenie z serwerem WebSocket zostało nawiązane!");
