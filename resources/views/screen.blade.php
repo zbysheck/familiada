@@ -41,8 +41,17 @@
         conn.onmessage = function(e) {
             console.log(e.data);
 
+        if(e.data.length<5)
+            setBoo(...e.data.split(','),'male')
+        else
             write(...e.data.split(','))
         };
+        redBad = 0;
+        blueBad = 0;
+        redBigBad = 0;
+        blueBigBad = 0;
+        sum = 0;
+
 
 
         $(document).ready(function() {
@@ -205,30 +214,78 @@
                     }
                 }
             }
-
-            //console.log(char);
         }
 
-        function write(position, word, points){
+        function setBoo(gridX, gridY, char){
+            let [x, y] = translateToGrid(gridX, gridY);
+            charArray = makeBoo(char);
+            //lightUp(x,y);
+            //console.log(12212, charArray)
+            for(let i=0; i<21; i++){
+                for(let j=0; j<15; j++) {
+                    console.log(i,j)
+                    let dot = getDot(x+j, y+i)
+                    if(charArray[i][j]){
+                        dot.addClass('hovered')
+                    }else{
+                        //console.log('rem')
+                        dot.removeClass('hovered')
+                    }
+                }
+            }
+
+            var audio = new Audio('niepoprawna-familiada.mp3');
+            audio.play();
+        }
+
+        function write(position, word, points = 0){
             //console.log(word.length, points)
 
             if(points){
                 var audio = new Audio('poprawna-familiada.mp3');
                 audio.play();
             }
+
+
+            points1 = Math.floor(points/10)
             let arr = [
                 position.toString(),
                 ' ',
                 ...word,
                 ...' '.repeat(18-word.length),
-                Math.floor(points/10),
+                points1 ? points1 : ' ',
                 points%10,
             ];
             for(i=0;i<arr.length;i++){
-
                 //sleep(1000)
-                //console.log(4+i, position, arr[i])
                 setCharacter(4+i, position, arr[i])
+            }
+
+            writeSum(points)
+        }
+
+        function writeSum(points){
+            //console.log(word.length, points)
+
+            if(points){
+                var audio = new Audio('poprawna-familiada.mp3');
+                audio.play();
+            }
+
+            points1 = Math.floor(points/100)
+            points2 = Math.floor(points/10)%10
+
+            let arr = [
+                ...' '.repeat(14),
+                ...'suma',
+                ' ',
+                points1 ? points1 : ' ',
+                points2 ? points2 : ' ',
+                points%10,
+            ];
+            for(i=0;i<arr.length;i++){
+                //sleep(1000)
+                setCharacter(4+i, 8, arr[i])
             }
         }
 
@@ -688,7 +745,41 @@
             return convertToBooleanMatrix(chosen);
         }
 
+        function makeBoo(char){
+            chars={
+                'male': [
+                    '               ',
+                    '11           11',
+                    '111         111',
+                    '1111       1111',
+                    ' 1111     1111 ',
+                    '  1111   1111  ',
+                    '   1111 1111   ',
+                    '     11111     ',
+                    '     11111     ',
+                    '      111      ',
+                    '       1       ',
+                    '      111      ',
+                    '     11111     ',
+                    '     11111     ',
+                    '   1111 1111   ',
+                    '  1111   1111  ',
+                    ' 1111     1111 ',
+                    '1111       1111',
+                    '111         111',
+                    '11           11',
+                    '               '
+                ]
+
+            };
+
+            chosen = chars[char] ? chars[char] : chars['male']
+
+            return convertToBooleanMatrix(chosen);
+        }
+
         function convertToBooleanMatrix(stringArray) {
+            //console.log(stringArray)
             return stringArray.map(row => {
                 return Array.from(row).map(element => {
                     return element === '1';
