@@ -40,12 +40,12 @@ Route::get('/admin-files', function () {
 
 Route::get('/admin-non-files', function () {
     return view('admin', [
-        'value1' => "zmienić lokalizację",
-        'value2' => "wyświetlić zawartość",
+        'value1' => "zmienić lokaliza.",
+        'value2' => "wyświetlić zaw.",
         'value3' => "wyświetlanie",
         'value4' => "znaleźć plik",
         'value5' => "przeszukac pliki",
-        'value6' => "wyświetlić historię",
+        'value6' => "wyświetlić hist.",
         'points1' => 34,
         'points2' => 28,
         'points3' => 18,
