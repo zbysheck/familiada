@@ -37,3 +37,20 @@ Route::get('/admin-files', function () {
         'points6' => 1,
     ]);
 });
+
+Route::get('/admin-non-files', function () {
+    return view('admin', [
+        'value1' => "zmienić lokalizację",
+        'value2' => "wyświetlić zawartość",
+        'value3' => "wyświetlanie",
+        'value4' => "znaleźć plik",
+        'value5' => "przeszukac pliki",
+        'value6' => "wyświetlić historię",
+        'points1' => 34,
+        'points2' => 28,
+        'points3' => 18,
+        'points4' => 11,
+        'points5' => 9,
+        'points6' => 1,
+    ]);
+});
