@@ -54,3 +54,38 @@ Route::get('/admin-non-files', function () {
         'points6' => 1,
     ]);
 });
+
+Route::get('/admin-show', function () {
+    return view('admin', [
+        'value1' => "less",
+        'value2' => "cat",
+        'value3' => "head",
+        'value4' => "tail",
+        'value5' => "vim",
+        'value6' => "nano",
+        'points1' => 34,
+        'points2' => 28,
+        'points3' => 18,
+        'points4' => 11,
+        'points5' => 9,
+        'points6' => 1,
+    ]);
+});
+
+
+Route::get('/admin-ogniem', function () {
+    return view('admin', [
+        'value1' => "skrzetuski",
+        'value2' => "bohun",
+        'value3' => "helena",
+        'value4' => "zagłoba",
+        'value5' => "podbipięta",
+        'value6' => "wołodyjowski",
+        'points1' => 34,
+        'points2' => 28,
+        'points3' => 18,
+        'points4' => 11,
+        'points5' => 9,
+        'points6' => 1,
+    ]);
+});
